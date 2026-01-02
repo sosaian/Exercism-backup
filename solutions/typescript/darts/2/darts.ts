@@ -1,0 +1,24 @@
+const TARGET_OUTER_CIRCLE_RADIUS = 10
+const TARGET_MIDDLE_CIRCLE_RADIUS = 5
+const TARGET_INNER_CIRCLE_RADIUS = 1
+
+const TARGET_OUTER_CIRCLE_THRESHOLD = TARGET_OUTER_CIRCLE_RADIUS ** 2
+const TARGET_MIDDLE_CIRCLE_THRESHOLD = TARGET_MIDDLE_CIRCLE_RADIUS ** 2 
+const TARGET_INNER_CIRCLE_THRESHOLD = TARGET_INNER_CIRCLE_RADIUS ** 2
+
+const OUT_OF_TARGET_SCORE = 0
+const TARGET_OUTER_CIRCLE_SCORE = 1
+const TARGET_MIDDLE_CIRCLE_SCORE = 5
+const TARGET_INNER_CIRCLE_SCORE = 10
+
+export function score(x: number, y: number): number {
+    const distanceSquared = (x ** 2) + (y ** 2) // Pythagorean Theorem: x^2 + y^2 = distance^2
+
+    if (distanceSquared > TARGET_OUTER_CIRCLE_THRESHOLD) { return OUT_OF_TARGET_SCORE }
+    
+    if (distanceSquared > TARGET_MIDDLE_CIRCLE_THRESHOLD) { return TARGET_OUTER_CIRCLE_SCORE }
+    
+    if (distanceSquared > TARGET_INNER_CIRCLE_THRESHOLD) { return TARGET_MIDDLE_CIRCLE_SCORE }
+    
+    return TARGET_INNER_CIRCLE_SCORE
+}
