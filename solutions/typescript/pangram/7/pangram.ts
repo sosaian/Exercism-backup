@@ -1,0 +1,1 @@
+export function isPangram(input : string) : boolean { return new Set(input.toLowerCase().match(/[a-z]/g) || []).size === 26 }
